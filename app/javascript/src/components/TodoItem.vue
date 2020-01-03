@@ -1,7 +1,7 @@
 <template>
   <div class="todo-item">
-    <p class="name">{{ name }}</p>
-    <p class="due-date">{{ due_date }}</p>
+    <strong>Name:</strong><p class="name">{{ name }}</p>
+    <strong>Due At:</strong><p class="due-at">{{ due_at }}</p>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default Vue.extend({
     name: {
       type: String
     },
-    due_date: {
+    due_at: {
       type: String
     }
   }

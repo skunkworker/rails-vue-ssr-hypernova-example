@@ -26,6 +26,13 @@ const server = {
         test: /\.vue$/,
         exclude: /node_modules/,
         use: 'vue-loader'
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
       }
     ]
   },
@@ -35,39 +42,46 @@ const server = {
   ]
 }
 
-const client = {
-  target: 'web',
-  node: {
-    fs: 'empty',
-    module: 'empty'
-  },
-  resolve: {
-    alias: {
-      'Components': path.resolve(__dirname, '..', '..', 'app/javascript/src/components/')
-    }
-  },
-  entry: path.join(__dirname, 'src/client.js'),
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'client.js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
-      },
-      {
-        test: /\.vue$/,
-        exclude: /node_modules/,
-        use: 'vue-loader'
-      }
-    ]
-  },
-  plugins: [
-    new VueLoaderPlugin()
-  ]
-}
+// const client = {
+//   target: 'web',
+//   node: {
+//     fs: 'empty',
+//     module: 'empty'
+//   },
+//   resolve: {
+//     alias: {
+//       'Components': path.resolve(__dirname, '..', '..', 'app/javascript/src/components/')
+//     }
+//   },
+//   entry: path.join(__dirname, 'src/client.js'),
+//   output: {
+//     path: path.join(__dirname, 'dist'),
+//     filename: 'client.js'
+//   },
+//   module: {
+//     rules: [
+//       {
+//         test: /\.js$/,
+//         exclude: /node_modules/,
+//         use: 'babel-loader'
+//       },
+//       {
+//         test: /\.vue$/,
+//         exclude: /node_modules/,
+//         use: 'vue-loader'
+//       },
+//       {
+//         test: /\.css$/,
+//         use: [
+//           'vue-style-loader',
+//           'css-loader'
+//         ]
+//       }
+//     ]
+//   },
+//   plugins: [
+//     new VueLoaderPlugin()
+//   ]
+// }
 
-module.exports = [server, client]
+module.exports = [server]

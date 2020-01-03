@@ -1,0 +1,24 @@
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "modules": false,
+      "targets": {
+        "browsers": "> 1%",
+        "uglify": true
+      },
+      "useBuiltIns": "entry"
+    }]
+  ],
+
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "transform-object-rest-spread",
+    ["transform-class-properties", { "spec": true }],
+  ],
+
+  "env": {
+     "production": {
+       "plugins": ["transform-remove-console"]
+     }
+   }
+}
