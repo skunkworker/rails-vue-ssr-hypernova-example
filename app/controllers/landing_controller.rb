@@ -3,7 +3,8 @@ class LandingController < ApplicationController
     @todo_items = [
       TodoItem.new(name: "One item", due_at: 1.hour.from_now),
       TodoItem.new(name: "A second item", due_at: 2.hour.from_now),
-      TodoItem.first
+      TodoItem.first,
+      nil # should be removed
     ]
 
     @todo_item = TodoItem.new(name: "Foobar", due_at: 1.hour.from_now)

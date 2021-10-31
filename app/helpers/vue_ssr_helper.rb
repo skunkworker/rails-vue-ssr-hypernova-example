@@ -36,6 +36,7 @@ module VueSSRHelper
   end
 
   def render_multiple_todo_items(todo_items)
+    todo_items.compact! # remove nil items
     item_hashes = todo_items.map { |item| ::TodoItemSerializer.new(item).to_h }
 
     raw render_many('TodoItem', item_hashes).join("\n")
