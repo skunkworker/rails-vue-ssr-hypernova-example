@@ -13,6 +13,8 @@ module VueSSRHelper
     }
 
     response = ::HTTParty.post(ssr_server_url, body: body.to_json, headers: {"Content-Type" => 'application/json'})
+    duration = response.parsed_response.dig("results","content","duration")
+    ::Rails.logger.info "SSR render took duration #{duration}ms"
 
     return ::JSON.parse(response.body).dig("results","content","html")
   end
@@ -31,6 +33,15 @@ module VueSSRHelper
     end
 
     response = ::HTTParty.post(ssr_server_url, body: body_h.to_json, headers: {"Content-Type" => 'application/json'})
+
+    durations = response.parsed_response["results"].values.map{|res| res["duration"] }
+    duration_sum = durations.sum
+
+    durations.each do |duration|
+      ::Rails.logger.info "SSR render took duration #{duration}ms"
+    end
+
+    ::Rails.logger.info "Total: SSR render took duration #{duration_sum}ms"
 
     return ::JSON.parse(response.body)["results"].map{|k,v| v["html"]}
   end
