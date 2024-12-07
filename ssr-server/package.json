@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "css-loader": "^3.4.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "hypernova": "^2.5.0",
     "hypernova-vue": "^3.0.4",
     "sass-loader": "^8.0.0",
